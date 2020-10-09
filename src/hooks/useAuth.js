@@ -16,6 +16,8 @@ const useAuth = () => {
             displayName: name
         })
     }
+
+    return {login, loggout, register}
 }
 
 export default useAuth;
