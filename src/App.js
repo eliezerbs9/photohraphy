@@ -3,6 +3,9 @@ import './App.css';
 import {projectAuth} from './firebase/config'
 import Home from './components/Home'
 import Login from './components/Login'
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import SignUp from './components/SignUp';
+
 
 function App() {
 
@@ -24,9 +27,16 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
-      {user ? (<Home />) : (<Login />)}
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/signup" exact component={SignUp} />
+        </Switch>
+      </div>
+    </Router>
+    
   );
 }
 
