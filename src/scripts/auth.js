@@ -25,16 +25,9 @@ export const register =  (name, email, password) => {
     })
 }
 
-export const onAuthStateChange =  () => {
-    auth.onAuthStateChanged((user) => {
-        if(user){
-            console.log('user  logged in')
-            return true
-        }else{
-            console.log('user  logged out')
-            return false
-        }
-    })
+export const currentUser = async () => {
+    let user = await auth.currentUser
+    return user
 }
 
 
