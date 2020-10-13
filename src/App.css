@@ -1,5 +1,13 @@
+:root{
+    --primary: #2F003D;
+}
 body{
+    box-sizing: border-box;
     background-color: #AAAAAA;
+}
+.content{
+    padding: 10px 10px 10px 0;
+    margin: 0 20%;
 }
 #login{
     background-color: #2F003D;
@@ -90,12 +98,89 @@ body{
         margin-top: 20px;
     }
 .btn{
+    text-align: center;
+    text-decoration: none;
     cursor: pointer;
+    padding: 4px 2px;
     height: 20px;
-    width: 100px;
+    width: auto;
+    vertical-align: middle;
+    line-height: 20px;
 }
+    .btn:visited{
+        text-decoration: none;
+        color: inherit;
+    }
     .btn--lg{
         height: 30px;
         width: 100%;
+    }
+    .btn--primary{
+        border: 3px solid var(--primary);
+        color: var(--primary);
+    }
+        .btn--primary:hover{
+            background-color: var(--primary);
+            color: white;
+        }
+    .btn--danger{
+        border: 3px solid red;
+        color: red;
+    }
+        .btn--danger:hover{
+            background-color: red;
+            color: white;
+        }
+
+.profile{
+    display: flex;
+    background-color: white;
+}
+.profile_photo{
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+    .profile_photo__img{
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+.profile_info{
+
+}
+.profile_user{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 20px;
+}
+    .profile_user__name{
+        margin: 0;
+        font-size: 1.5rem;
+    }
+    .profile_user .btn--danger{
+        margin-left: auto;
+    }
+.profile_user_info{
+    padding: 0;
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+    .profile_user_info li{
+        font-weight: 600;
+    }
+
+    .profile_about__text{
+        font-size: small;
+        font-weight: 300;
+        font-style: italic;
     }
     

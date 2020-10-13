@@ -4,7 +4,7 @@ import Home from './components/Home'
 import Login from './components/Login'
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {AuthProvider} from './components/AuthContext'
-import SignUp from './components/SignUp';
+import SignIn from './components/SignIn';
 import PrivateRoute from './components/PrivateRoute'
 
 
@@ -18,7 +18,7 @@ function App() {
             <PrivateRoute path="/" exact component={Home} />
             {/* <Route path="/" exact component={Home} /> */}
             <Route path="/login" exact component={Login} />
-            <Route path="/signin" exact component={SignUp} />
+            <Route path="/signin" exact component={SignIn} />
           </Switch>
         </div>
       </Router>

@@ -3,11 +3,12 @@ import {Route, Redirect} from "react-router-dom";
 import {AuthContext} from './AuthContext'
 
 
+//THIS ROUTE ACCESS THE USER PASSED DOWN BY ITS PARENT COMPONENT WITH IS THE authContext
 const PrivateRoute = ({component: Component, ...rest}) => {
     
     const {user} = useContext(AuthContext)
 
-    console.log('private route user: '+user)
+    console.log(+user)
 
     return (
         <Route 

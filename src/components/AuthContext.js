@@ -11,7 +11,10 @@ export const AuthProvider = ({children}) => {
 
     useEffect(() => {
         //SET-UP LISTENNER FOR USER'S CHANGES
-        auth.onAuthStateChanged(setUser)
+        auth.onAuthStateChanged((user) => {
+            console.log(user)
+            setUser(user)
+        })
     }, [])
 
     return(
