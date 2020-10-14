@@ -22,7 +22,7 @@ const Profile = () => {
                     <a 
                         className="btn btn--primary"
                         onClick={() => {
-                            let modal = document.getElementById('edit_profile');
+                            let modal = document.getElementById('backdrop');
                             modal.style.display = "block"
                         }}
                         >Edit Profile</a>

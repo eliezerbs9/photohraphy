@@ -207,7 +207,7 @@ body{
 .navbar_link .btn--danger{
     margin-left: auto;
 }
-.edit_profile{
+.backdrop{
     position: absolute;
     top: 0;
     left: 0;
@@ -216,16 +216,44 @@ body{
     display: block;
     background-color: rgba(255, 255, 255, 0.5);
 }
-    .edit_profile__box{
-        position: relative;
-        width: 30vw;
-        height: 70vh;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        box-shadow: -3px 3px 10px #000000 ;
-        background: white;
-        border: 2px solid var(--primary);
-        opacity: 1;
+.edit_profile{
+    position: relative;
+    width: 30vw;
+    height: 70vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: -3px 3px 10px #000000 ;
+    background: white;
+    border: 2px solid var(--primary);
+    opacity: 1;
+}
+    .edit_profile__form{
+        padding: 20px 50px;
+        display: flex;
+        flex-direction: column;
     }
+    .edit_profile__form__input{
+        height: 20px;
+        padding: 3px 5px;
+        border: 1px solid;
+    }
+    .edit_profile__form__txt{
+        resize: none;
+        border: 1px solid;
+    }
+    .edit_profile__form .btn--primary{
+        height: 30px;
+        position: absolute;
+        width: 70px;
+        bottom: 0;
+        right: 0;
+        margin-bottom: 20px;
+        margin-right: 50px;
+    }
+.progress_bar{
+    height: 5px;
+    background-color: var(--primary);
+}
+
     
