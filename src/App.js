@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {AuthProvider} from './components/AuthContext'
 import SignIn from './components/SignIn';
 import PrivateRoute from './components/PrivateRoute'
+import EditProfile from './components/EditProfile'
 
 
 function App() {
@@ -17,11 +18,13 @@ function App() {
           <Switch>
             <PrivateRoute path="/" exact component={Home} />
             {/* <Route path="/" exact component={Home} /> */}
+            <Route path="/edit-profile/:id" exact component={EditProfile}/>
             <Route path="/login" exact component={Login} />
             <Route path="/signin" exact component={SignIn} />
           </Switch>
         </div>
       </Router>
+      <EditProfile />
     </AuthProvider>
   );
 }

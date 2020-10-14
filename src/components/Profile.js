@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import {AuthContext} from './AuthContext'
+import {Link} from 'react-router-dom'
 
 
 const Profile = () => {
@@ -18,7 +19,14 @@ const Profile = () => {
             <section className="profile_info">
                 <div className="profile_user">
                     <p className="profile_user__name">@eliezerbs9</p>
-                    <a className="btn btn--primary"href="#">Edit Profile</a>
+                    <a 
+                        className="btn btn--primary"
+                        onClick={() => {
+                            let modal = document.getElementById('edit_profile');
+                            modal.style.display = "block"
+                        }}
+                        >Edit Profile</a>
+                    {/* <Link to={`/edit-profile/${user.uid}`} className="btn btn--primary">Edit Profile</Link> */}
                 </div>
                 <ul className="profile_user_info">
                     <li>San Rafael</li>
