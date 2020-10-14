@@ -183,4 +183,28 @@ body{
         font-weight: 300;
         font-style: italic;
     }
+
+.navbar{
+    background-color: white;
+    height: 50px;
+    width: 100%;
+}
+    .navbar .content{
+        padding: 0;
+    }
+.navbar_links{
+    margin: 0;
+    height: 50px;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    align-items: center;
+}
+.navbar_link{
+    display: flex;
+}
+.navbar_link .btn--danger{
+    margin-left: auto;
+}
     

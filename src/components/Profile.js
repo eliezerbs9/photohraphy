@@ -1,6 +1,5 @@
 import React, {useContext} from 'react'
 import {AuthContext} from './AuthContext'
-import {logout} from '../scripts/auth'
 
 
 const Profile = () => {
@@ -20,7 +19,6 @@ const Profile = () => {
                 <div className="profile_user">
                     <p className="profile_user__name">@eliezerbs9</p>
                     <a className="btn btn--primary"href="#">Edit Profile</a>
-                    <a className="btn btn--danger" onClick={logout}>Log out</a>
                 </div>
                 <ul className="profile_user_info">
                     <li>San Rafael</li>
