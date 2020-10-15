@@ -8,6 +8,7 @@ const useProfile = (uid) => {
         const unsub = firestore.collection('profile').doc(uid).get()
             .then((profile) => {
                 if(profile.exists){
+                    console.log(profile.data())
                     setProfile(profile.data())
                 }else{
                     console.log('Profile not found')
@@ -16,6 +17,7 @@ const useProfile = (uid) => {
             }).catch((error) => {
                 console.log('Error getting document: '+error)
             })
+            return () => unsub()
     }, [uid])
 
     return {profile}

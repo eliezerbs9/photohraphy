@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react'
 import useStorage from '../../hooks/useStorage'
 
-const ProfilePhotoUploader = ({file, setFile}) => {
+const ProfilePhotoUploader = ({file, setPhoto}) => {
     const {url, progress} = useStorage(file)
 
     useEffect(() => {
         if(url){
-            setFile(null)
+            setPhoto(url)
         }
-    }, [url, setFile])
+    }, [url, setPhoto])
 
     return (
         <div className="progress_bar" style={{width: progress + '%'}}></div>

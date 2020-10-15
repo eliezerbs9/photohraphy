@@ -1,13 +1,12 @@
-import React, {useState, useRef} from 'react'
+import React, {useState} from 'react'
 import ProfilePhotoUploader from './ProfilePhotoUploader'
 
-const EditProfilePhoto = () => {
+const EditProfilePhoto = ({setPhoto}) => {
 
     const [file, setFile] = useState(null);
     const [imageError, setImageError] = useState(null)
 
     const fileTypes = ['image/png', 'image/jpeg', 'image/jpg']
-    const photoInput = useRef()
 
     const photoHandler = (e) => {
         let selected = e.target.files[0]
@@ -26,7 +25,6 @@ const EditProfilePhoto = () => {
             <label>Profile Photo</label>
             <label style={{margin: "10px 0px"}}>
                 <input 
-                    ref={photoInput}
                     className=""
                     type="file" 
                     name="profile-photo"
@@ -37,7 +35,7 @@ const EditProfilePhoto = () => {
             </label>
             {imageError && <p>{imageError}</p>}
             {file && <p style={{margin: "0px"}}>{file.name}</p>}
-            {file && <ProfilePhotoUploader file={file} setFile={setFile} />}
+            {file && <ProfilePhotoUploader file={file} setPhoto={setPhoto}/>}
         </>
     )
 }
