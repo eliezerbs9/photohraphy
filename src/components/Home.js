@@ -1,5 +1,5 @@
 import React from 'react'
-import Profile from './Profile'
+import Profile from './Profile//Profile'
 import Navbar from './Navbar'
 
 const Home = () => {

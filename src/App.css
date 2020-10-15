@@ -104,8 +104,7 @@ body{
     padding: 4px 2px;
     height: 20px;
     width: auto;
-    vertical-align: middle;
-    line-height: 20px;
+    background-color: transparent;
 }
     .btn:visited{
         text-decoration: none;
@@ -113,7 +112,6 @@ body{
     }
     .btn--lg{
         height: 30px;
-        width: 100%;
     }
     .btn--primary{
         border: 3px solid var(--primary);
@@ -129,6 +127,14 @@ body{
     }
         .btn--danger:hover{
             background-color: red;
+            color: white;
+        }
+    .btn--success{
+        border: 3px solid green;
+        color: green;
+    }
+        .btn--success:hover{
+            background-color: green;
             color: white;
         }
 
@@ -250,6 +256,9 @@ body{
         right: 0;
         margin-bottom: 20px;
         margin-right: 50px;
+    }
+    .edit_profile__form .btn--success{
+        width: 100px;
     }
 .progress_bar{
     height: 5px;

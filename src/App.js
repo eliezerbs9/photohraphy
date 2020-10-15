@@ -6,7 +6,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {AuthProvider} from './components/AuthContext'
 import SignIn from './components/SignIn';
 import PrivateRoute from './components/PrivateRoute'
-import EditProfile from './components/EditProfile'
+import EditProfile from './components/Profile/EditProfile'
 
 
 function App() {

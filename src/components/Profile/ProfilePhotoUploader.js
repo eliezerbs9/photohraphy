@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import useStorage from '../hooks/useStorage'
+import useStorage from '../../hooks/useStorage'
 
 const ProfilePhotoUploader = ({file, setFile}) => {
     const {url, progress} = useStorage(file)
@@ -7,7 +7,6 @@ const ProfilePhotoUploader = ({file, setFile}) => {
     useEffect(() => {
         if(url){
             setFile(null)
-            console.log('File successfuly upoloaded')
         }
     }, [url, setFile])
 
