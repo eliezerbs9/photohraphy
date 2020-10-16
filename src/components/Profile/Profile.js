@@ -7,9 +7,6 @@ const Profile = () => {
 
     const {user} = useContext(AuthContext)
     const {profile} = useProfile(user.uid)
-    
-
-    console.log(profile)
 
     return (
         <>

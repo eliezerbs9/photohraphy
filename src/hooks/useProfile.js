@@ -5,8 +5,9 @@ const useProfile = (uid) => {
     const [profile, setProfile] = useState(null)
 
     useEffect(() => {
-        const unsub = firestore.collection('profile').doc(uid)
-            .onSnapshot((doc) => {
+        const profileRef = firestore.collection('profile').doc(uid)
+
+        const unsub =  profileRef.onSnapshot((doc) => {
                 if(doc){
                     console.log(doc.data())
                     setProfile(doc.data())

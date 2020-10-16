@@ -3,10 +3,10 @@ import {auth} from '../firebase/config'
 // const [user, setUser] = useState(null)
 
 
-export const login =  (email, password) => {
+export const login =  async (email, password) => {
     try{
         console.log('log in')
-        auth.signInWithEmailAndPassword(email, password)
+        await auth.signInWithEmailAndPassword(email, password)
     }catch(err){
         console.log(err)
     }
@@ -17,10 +17,14 @@ export const logout = () => {
     return auth.signOut()
 }
 
-export const register =  (name, email, password) => {
+export const register = async (name, email, password) => {
     console.log(`REGISTERING ${name} ${email} ${password}`)
-     auth.createUserWithEmailAndPassword(email, password)
-    return auth.currentUser.updateProfile({
+    try{
+        await auth.createUserWithEmailAndPassword(email, password)
+    }catch(error){
+        console.error(error)
+    }
+    return await auth.currentUser.updateProfile({
         displayName: name
     })
 }
