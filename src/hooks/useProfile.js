@@ -5,20 +5,16 @@ const useProfile = (uid) => {
     const [profile, setProfile] = useState(null)
 
     useEffect(() => {
-        const unsub = firestore.collection('profile').doc(uid).get()
-            .then((profile) => {
-                if(profile.exists){
-                    console.log(profile.data)
-                    setProfile(profile.data())
+        const unsub = firestore.collection('profile').doc(uid)
+            .onSnapshot((doc) => {
+                if(doc){
+                    console.log(doc.data())
+                    setProfile(doc.data())
                 }else{
                     console.log('Profile not found')
                     setProfile(null)
                 }
-            }).catch((error) => {
-                console.log('Error getting document: '+error)
             })
-
-       
             return () => unsub()
     }, [uid])
 
