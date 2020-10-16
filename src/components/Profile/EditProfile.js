@@ -1,6 +1,8 @@
-import React, {useState, useContext} from 'react'
+import React, {useContext} from 'react'
 import EditProfilePhoto from './EditProfilePhoto'
 import {ProfileContext} from '../Providers/ProfileContext'
+import {AuthContext} from '../Providers/AuthContext'
+import {updateProfile} from '../../scripts/firestore'
 
 const EditProfile = () => {
 
@@ -11,13 +13,18 @@ const EditProfile = () => {
         }
     }
 
-    const [photo, setPhoto] = useState("")
-    const [name, setName] = useState("")
-    const [location, setLocation] = useState("")
-    const [aboutMe, setAboutMe] = useState("")
 
     const {profile, setProfile} = useContext(ProfileContext)
+    const {user} = useContext(AuthContext) 
+
+    console.log(`user edit profile `)
     
+    const onChangeHandler = (e) => {
+        setProfile({
+            ...profile, 
+            [e.target.name]: e.target.value
+        })
+    }
 
     return (
             <div 
@@ -26,13 +33,13 @@ const EditProfile = () => {
                 onClick={closeModal}>
                 <div className="edit_profile">
                     <form className="edit_profile__form">
-                        <EditProfilePhoto setPhoto={setPhoto}/>
+                        <EditProfilePhoto/>
                         <label htmlFor="name">Name</label>
                         <input 
                             className="edit_profile__form__input"
                             type="text" 
                             name="name"
-                            onChange={(e) => {setName(e.target.value)}}
+                            onChange={onChangeHandler}
                         />
 
                         <label htmlFor="location">Location</label>
@@ -40,15 +47,23 @@ const EditProfile = () => {
                             className="edit_profile__form__input"
                             type="text" 
                             name="location"
-                            onChange={(e) => {setLocation(e.target.value)}}
+                            onChange={onChangeHandler}
                         />
 
                         <label htmlFor="about-me">About me</label>
                         <textarea
                             className="edit_profile__form__txt" 
                             type="text-area" 
-                            name="about-me"
-                            onChange={(e) => {setAboutMe(e.target.value)}}
+                            name="about_me"
+                            onChange={onChangeHandler}
+                        />
+
+                        <label htmlFor="birth_date">About me</label>
+                        <input 
+                            className="edit_profile__form__input"
+                            type="date" 
+                            name="birth_date"
+                            onChange={onChangeHandler}
                         />
 
                         <input 
@@ -56,13 +71,7 @@ const EditProfile = () => {
                             className="btn btn--primary" 
                             value="Submit"
                             onClick={() => {
-                                let user = {
-                                    photo: photo,
-                                    name: name,
-                                    location: location,
-                                    about_me: aboutMe
-                                }
-                                setProfile(user)
+                                updateProfile(user.uid, profile)
                             }}
                         />
                     </form>

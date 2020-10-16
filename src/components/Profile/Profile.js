@@ -1,8 +1,6 @@
-import React, {useContext, useEffect} from 'react'
+import React, {useContext} from 'react'
 import {AuthContext} from '../Providers/AuthContext'
 import useProfile from '../../hooks/useProfile'
-
-
 
 
 const Profile = () => {

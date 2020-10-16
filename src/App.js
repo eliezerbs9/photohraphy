@@ -24,11 +24,11 @@ function App() {
             <Route path="/login" exact component={Login} />
             <Route path="/signin" exact component={SignIn} />
           </Switch>
+          <ProfileProvider>
+            <EditProfile />
+          </ProfileProvider>
         </div>
       </Router>
-      <ProfileProvider>
-        <EditProfile />
-      </ProfileProvider>
     </AuthProvider>
   );
 }
