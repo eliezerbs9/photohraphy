@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react'
 import {login, currentUser} from '../scripts/auth'
 import {Redirect} from 'react-router-dom'
-import {AuthContext} from './AuthContext'
+import {AuthContext} from './Providers/AuthContext'
 
 
 const Login = () => {

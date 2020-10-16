@@ -3,10 +3,12 @@ import './App.css';
 import Home from './components/Home'
 import Login from './components/Login'
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import {AuthProvider} from './components/AuthContext'
+import {AuthProvider} from './components/Providers/AuthContext'
 import SignIn from './components/SignIn';
 import PrivateRoute from './components/PrivateRoute'
 import EditProfile from './components/Profile/EditProfile'
+import {ProfileProvider} from './components/Providers/ProfileContext'
+
 
 
 function App() {
@@ -24,7 +26,9 @@ function App() {
           </Switch>
         </div>
       </Router>
-      <EditProfile />
+      <ProfileProvider>
+        <EditProfile />
+      </ProfileProvider>
     </AuthProvider>
   );
 }

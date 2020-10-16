@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import {Route, Redirect} from "react-router-dom";
-import {AuthContext} from './AuthContext'
+import {AuthContext} from './Providers/AuthContext'
 
 
 //THIS ROUTE ACCESS THE USER PASSED DOWN BY ITS PARENT COMPONENT WITH IS THE authContext

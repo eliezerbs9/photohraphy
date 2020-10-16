@@ -1,5 +1,5 @@
 import React, {useContext, useEffect} from 'react'
-import {AuthContext} from '../AuthContext'
+import {AuthContext} from '../Providers/AuthContext'
 import useProfile from '../../hooks/useProfile'
 
 
@@ -9,6 +9,7 @@ const Profile = () => {
 
     const {user} = useContext(AuthContext)
     const {profile} = useProfile(user.uid)
+    
 
     console.log(profile)
 
