@@ -1,4 +1,5 @@
 import React, {createContext, useState, useEffect} from 'react'
+import { useCallback } from 'react'
 
 //CREATE A NEW CONTEXT
 export const ProfileContext = createContext()
@@ -7,12 +8,14 @@ export const ProfileContext = createContext()
 export const ProfileProvider = ({children}) => {
 
     const [profile, setProfile] = useState({
-        photo: "",
+       photo: "",
         name: "",
         location: "",
         birth_date: "",
         about_me: ""
     })
+
+    const [edit, setEdit] = useState(false)
 
     useEffect(() => {
         console.log('INSIDE useEffect on Profile Context: ')
@@ -21,7 +24,7 @@ export const ProfileProvider = ({children}) => {
 
     return(
         <ProfileContext.Provider 
-            value={{profile, setProfile}}>
+            value={{profile, setProfile, edit, setEdit}}>
                 {children}
         </ProfileContext.Provider>
     )

@@ -1,4 +1,5 @@
 import React, {useContext} from 'react'
+import {ProfileContext} from '../Providers/ProfileContext'
 import {AuthContext} from '../Providers/AuthContext'
 import useProfile from '../../hooks/useProfile'
 
@@ -7,6 +8,7 @@ const Profile = () => {
 
     const {user} = useContext(AuthContext)
     const {profile} = useProfile(user.uid)
+    const {edit, setEdit} = useContext(ProfileContext)
 
     return (
         <>
@@ -25,8 +27,8 @@ const Profile = () => {
                             <a 
                                 className="btn btn--primary"
                                 onClick={() => {
-                                    let modal = document.getElementById('backdrop');
-                                    modal.style.display = "block"
+                                    console.log('setting edit profile')
+                                    setEdit(true)
                                 }}
                                 >Edit Profile</a>
                             {/* <Link to={`/edit-profile/${user.uid}`} className="btn btn--primary">Edit Profile</Link> */}

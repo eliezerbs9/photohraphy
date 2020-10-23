@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import EditProfilePhoto from './EditProfilePhoto'
 import {ProfileContext} from '../Providers/ProfileContext'
 import {AuthContext} from '../Providers/AuthContext'
@@ -6,18 +6,28 @@ import {updateProfile} from '../../scripts/firestore'
 
 const EditProfile = () => {
 
+    const modal = document.getElementById('backdrop');
+
     const closeModal = (e) => {
-        let modal = document.getElementById('backdrop');
         if(e.target.classList.contains('backdrop')){
-            modal.style.display = "none"
+            setEdit(false)
+            modal.classList.remove('backdrop--active')
         }
     }
 
+    const openModal = () => {
+        modal.classList.add('backdrop--active')
+    }
 
-    const {profile, setProfile} = useContext(ProfileContext)
+
+    const {
+        edit,
+        setEdit, 
+        profile, 
+        setProfile
+    } = useContext(ProfileContext)
+
     const {user} = useContext(AuthContext) 
-
-    console.log(`user edit profile `)
     
     const onChangeHandler = (e) => {
         setProfile({
@@ -25,6 +35,14 @@ const EditProfile = () => {
             [e.target.name]: e.target.value
         })
     }
+
+    useEffect(() => {
+        console.log('edit '+edit)
+        if(edit){
+            console.log('editar profile')
+            openModal();
+        }
+    },[edit])
 
     return (
             <div 

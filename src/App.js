@@ -15,20 +15,18 @@ function App() {
 
   return (
     <AuthProvider>
-      <Router>
-        <div className="App">
-          <Switch>
-            <PrivateRoute path="/" exact component={Home} />
-            {/* <Route path="/" exact component={Home} /> */}
-            <Route path="/edit-profile/:id" exact component={EditProfile}/>
-            <Route path="/login" exact component={Login} />
-            <Route path="/signin" exact component={SignIn} />
-          </Switch>
-          <ProfileProvider>
-            <EditProfile />
-          </ProfileProvider>
-        </div>
-      </Router>
+      <ProfileProvider>
+        <Router>
+          <div className="App">
+            <Switch>
+              <PrivateRoute path="/" exact component={Home} />
+              <Route path="/login" exact component={Login} />
+              <Route path="/signin" exact component={SignIn} />
+            </Switch>
+              <EditProfile />
+          </div>
+        </Router>
+      </ProfileProvider>
     </AuthProvider>
   );
 }
