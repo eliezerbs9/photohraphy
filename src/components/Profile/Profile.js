@@ -2,17 +2,20 @@ import React, {useContext} from 'react'
 import {ProfileContext} from '../Providers/ProfileContext'
 import {AuthContext} from '../Providers/AuthContext'
 import useProfile from '../../hooks/useProfile'
+import EditProfileModal from './EditProfileModal'
+import { useState } from 'react'
 
 
 const Profile = () => {
 
     const {user} = useContext(AuthContext)
     const {profile} = useProfile(user.uid)
-    const {edit, setEdit} = useContext(ProfileContext)
-
+    const [showModal, setShowModal] = useState(false)
     return (
-        <>
+        <>  
             {(user && profile) &&
+            <>
+                <EditProfileModal profile={profile} visible={showModal} setVisible={setShowModal} />
                 <header className="profile">
                     <div className="profile_photo">
                         <img 
@@ -28,7 +31,7 @@ const Profile = () => {
                                 className="btn btn--primary"
                                 onClick={() => {
                                     console.log('setting edit profile')
-                                    setEdit(true)
+                                    setShowModal(true)
                                 }}
                                 >Edit Profile</a>
                             {/* <Link to={`/edit-profile/${user.uid}`} className="btn btn--primary">Edit Profile</Link> */}
@@ -43,6 +46,7 @@ const Profile = () => {
                         </div>
                     </section>
                 </header>
+            </>  
             }
         </> 
 )

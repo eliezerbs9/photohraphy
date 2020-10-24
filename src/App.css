@@ -225,10 +225,10 @@ body{
     .backdrop--active{
         display: block;
     }
-.edit_profile{
+.modal_box{
+    max-width: fit-content;
+    max-height: fit-content;
     position: relative;
-    width: 30vw;
-    height: 70vh;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -236,6 +236,18 @@ body{
     background: white;
     border: 2px solid var(--primary);
     opacity: 1;
+}
+.edit_profile{
+    /* position: relative; */
+    width: 30vw;
+    height: 70vh;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: -3px 3px 10px #000000 ;
+    background: white;
+    border: 2px solid var(--primary);
+    opacity: 1; */
 }
     .edit_profile__form{
         padding: 20px 50px;

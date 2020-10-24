@@ -2,9 +2,8 @@ import React, {useEffect, useContext} from 'react'
 import useStorage from '../../hooks/useStorage'
 import {ProfileContext} from '../Providers/ProfileContext'
 
-const ProfilePhotoUploader = ({file}) => {
+const ProfilePhotoUploader = ({file, profile, setProfile}) => {
     const {url, progress} = useStorage(file)
-    const {profile, setProfile} = useContext(ProfileContext)
 
     useEffect(() => {
         if(url){

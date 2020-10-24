@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import ProfilePhotoUploader from './ProfilePhotoUploader'
 
-const EditProfilePhoto = () => {
+const EditProfilePhoto = ({profile, setProfile}) => {
 
     const [file, setFile] = useState(null);
     const [imageError, setImageError] = useState(null)
@@ -35,7 +35,7 @@ const EditProfilePhoto = () => {
             </label>
             {imageError && <p>{imageError}</p>}
             {file && <p style={{margin: "0px"}}>{file.name}</p>}
-            {file && <ProfilePhotoUploader file={file}/>}
+            {file && <ProfilePhotoUploader file={file} profile={profile} setProfile={setProfile}/>}
         </>
     )
 }
