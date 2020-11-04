@@ -1,10 +1,8 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import EditProfilePhoto from './EditProfilePhoto'
-import {ProfileContext} from '../Providers/ProfileContext'
 import {AuthContext} from '../Providers/AuthContext'
 import {updateProfile} from '../../scripts/firestore'
 import Modal from '../Layout/Modal'
-import { useState } from 'react'
 
 
 const EditProfileModal = ({visible, setVisible, profile}) => {
@@ -29,7 +27,7 @@ const EditProfileModal = ({visible, setVisible, profile}) => {
                             <EditProfilePhoto profile={editProfile} setProfile={setEditProfile}/>
                             <label htmlFor="name">Name</label>
                             <input 
-                                className="edit_profile__form__input"
+                                className="form_input"
                                 type="text" 
                                 name="name"
                                 defaultValue={profile.name}
@@ -38,7 +36,7 @@ const EditProfileModal = ({visible, setVisible, profile}) => {
 
                             <label htmlFor="location">Location</label>
                             <input 
-                                className="edit_profile__form__input"
+                                className="form_input"
                                 type="text" 
                                 name="location"
                                 defaultValue={profile.location}
@@ -47,7 +45,7 @@ const EditProfileModal = ({visible, setVisible, profile}) => {
 
                             <label htmlFor="about-me">About me</label>
                             <textarea
-                                className="edit_profile__form__txt" 
+                                className="form_txt" 
                                 type="text-area" 
                                 name="about_me"
                                 defaultValue={profile.about_me}
@@ -56,7 +54,7 @@ const EditProfileModal = ({visible, setVisible, profile}) => {
 
                             <label htmlFor="birth_date">About me</label>
                             <input 
-                                className="edit_profile__form__input"
+                                className="form_input"
                                 type="date" 
                                 name="birth_date"
                                 defaultValue={profile.birth_date}

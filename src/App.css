@@ -237,6 +237,17 @@ body{
     border: 2px solid var(--primary);
     opacity: 1;
 }
+.form_input{
+    height: 20px;
+    padding: 3px 5px;
+    border: 1px solid;
+    width: 100%;
+}
+.form_txt{
+    resize: none;
+    border: 1px solid;
+    width: 100%;
+}
 .edit_profile{
     /* position: relative; */
     width: 30vw;
@@ -254,15 +265,6 @@ body{
         display: flex;
         flex-direction: column;
     }
-    .edit_profile__form__input{
-        height: 20px;
-        padding: 3px 5px;
-        border: 1px solid;
-    }
-    .edit_profile__form__txt{
-        resize: none;
-        border: 1px solid;
-    }
     .edit_profile__form .btn--primary{
         height: 30px;
         position: absolute;
@@ -279,5 +281,34 @@ body{
     height: 5px;
     background-color: var(--primary);
 }
+.albuns{
+    position: relative;
+    margin-top: 10px;
+    background-color: white;
+}
+    .albuns .btn{
+        position: absolute;
+        right: 0;
+    }
+.add_photo{
+    min-height: 150px;
+    min-width: 400px;
+    max-width: 30vw;
+    max-height: 70vh; 
+}
+    .add_photo_form{
+        padding: 20px 50px;
+        display: flex;
+        flex-direction: column;
+    }
+    .add_photo_opt{
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;   
 
+    }
+.new_album{
+    width: 100%;
+}
     
