@@ -282,15 +282,17 @@ body{
     background-color: var(--primary);
 }
 .albuns{
-    position: relative;
     margin-top: 10px;
     background-color: white;
+    height: 600px;
+    width: 100%;
 }
     .albuns .btn{
-        position: absolute;
-        right: 0;
+        float: right;
+        margin-left: auto;
     }
 .add_photo{
+    background-color: white;
     min-height: 150px;
     min-width: 400px;
     max-width: 30vw;

@@ -8,7 +8,7 @@ const Albuns = () => {
     return (
         <>
             <AddPhotoModal visible={showModal} setVisible={setShowModal}/>
-            <section className="albuns">
+            <div className="albuns">
                         <a 
                             className="btn btn--primary"
                             onClick={() => {
@@ -19,7 +19,7 @@ const Albuns = () => {
                         <div className="albuns_grid">
                             
                         </div>
-            </section>
+            </div>
         </>
     )
 }
