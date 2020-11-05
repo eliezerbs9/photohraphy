@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Modal from '../Layout/Modal'
 import UploadPhoto from './UploadPhoto'
+import {createAlbum} from '../../scripts/firestore'
 
 const AddPhotoModal = ({visible, setVisible}) => {
 
@@ -33,7 +34,20 @@ const AddPhotoModal = ({visible, setVisible}) => {
                                 <label htmlFor="album_date">Album Date</label>
                                 <input className="form_input" type="date" id="album_date"/>
 
-                                <UploadPhoto />
+
+                                <input 
+                                    className="btn btn--lg btn--primary" 
+                                    type="button" 
+                                    value="Create New Album"
+                                    onClick={() => {
+                                        let album = {
+                                            name: "teste",
+                                            customerEmail: "eliezerbs99@gmail.com",
+                                            albumDate: "11/5/2020"
+                                        }
+                                        createAlbum('UiLt3FYVBLT48HDHEGX7XIlQsi82', album)
+                                    }}
+                                />
                             </div>
                         )}
                     </form>

@@ -63,7 +63,7 @@ const EditProfileModal = ({visible, setVisible, profile}) => {
 
                             <input 
                                 type="button" 
-                                className="btn btn--primary" 
+                                className="btn btn--lg btn--primary" 
                                 value="Submit"
                                 onClick={() => {
                                     updateProfile(user.uid, editProfile)
