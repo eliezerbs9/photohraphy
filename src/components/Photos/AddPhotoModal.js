@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Modal from '../Layout/Modal'
+import UploadPhoto from './UploadPhoto'
 
 const AddPhotoModal = ({visible, setVisible}) => {
 
@@ -31,6 +32,8 @@ const AddPhotoModal = ({visible, setVisible}) => {
 
                                 <label htmlFor="album_date">Album Date</label>
                                 <input className="form_input" type="date" id="album_date"/>
+
+                                <UploadPhoto />
                             </div>
                         )}
                     </form>

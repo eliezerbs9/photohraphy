@@ -98,13 +98,14 @@ body{
         margin-top: 20px;
     }
 .btn{
+    display: inline-block;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
     padding: 4px 2px;
     height: 20px;
-    width: auto;
     background-color: transparent;
+    width: auto;
 }
     .btn:visited{
         text-decoration: none;
@@ -313,4 +314,7 @@ body{
 .new_album{
     width: 100%;
 }
+    .new_album .btn{
+        margin-top: 20px;
+    }
     
