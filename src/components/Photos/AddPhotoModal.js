@@ -26,6 +26,15 @@ const AddPhotoModal = ({visible, setVisible}) => {
         })
     }
 
+    const saveAlbum = () => {
+        createAlbum('UiLt3FYVBLT48HDHEGX7XIlQsi82', album).then(() => {
+            alert("Album Successfuly created")
+            setAlbum(initialState)
+        }).catch(error => {
+            alert('There was an error')
+        })
+    }
+
     return (
         <>
             <Modal visible={visible} setVisible={setVisible}>
@@ -76,15 +85,7 @@ const AddPhotoModal = ({visible, setVisible}) => {
                                     className="btn btn--lg btn--primary" 
                                     type="button" 
                                     value="Create New Album"
-                                    onClick={() => {
-                                         createAlbum('UiLt3FYVBLT48HDHEGX7XIlQsi82', album).then(() => {
-                                             alert("Album Successfuly created")
-                                             setAlbum(initialState)
-                                         }).catch(error => {
-                                             alert('There was an error')
-                                         })
-                                        
-                                   }}
+                                    onClick={saveAlbum}
                                 />
                             </div>
                         )}
