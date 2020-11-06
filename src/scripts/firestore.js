@@ -13,12 +13,17 @@ export const updateProfile = async (uid, data) => {
 }
 
 export const createAlbum = async (uid, data) => {
-    let docRef = firestore.collection('albums').doc(uid)
-        docRef.set({
+    let docRef = firestore.collection('albums').doc(uid).collection('myAlbums')
+        docRef.add({
             ...data,
             photographerId: uid,
             createdAt: new Date().toLocaleString(),
-            photos: []
+        })
+        .then(() => {
+            console.log('Album created')
+        })
+        .catch(error => {
+            console.log('Error creating the album', error)
         })
 }
 

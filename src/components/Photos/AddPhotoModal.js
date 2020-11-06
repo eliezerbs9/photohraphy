@@ -6,6 +6,22 @@ import {createAlbum} from '../../scripts/firestore'
 const AddPhotoModal = ({visible, setVisible}) => {
 
     const [newAbum, setNewAlbum] = useState(null)
+    const [album, setAlbum] = useState({
+        photographerId: "",
+        name: "",
+        customerEmail: "",
+        albumDate: "",
+        createdAt: "",
+        photos: []
+    })
+
+    const onChangeHandler = e => {
+        e.preventDefault();
+        setAlbum({
+            ...album,
+            [e.target.name]: e.target.value,
+        })
+    }
 
     return (
         <>
@@ -26,13 +42,28 @@ const AddPhotoModal = ({visible, setVisible}) => {
                         {newAbum === true && (
                             <div className="new_album">
                                 <label htmlFor="album_name">Album Name</label>
-                                <input className="form_input" type="text" id="album_name"/>
+                                <input
+                                    name="name" 
+                                    onChange={onChangeHandler}
+                                    className="form_input" 
+                                    type="text" 
+                                    id="album_name"/>
 
                                 <label htmlFor="customer_email">Customer Email</label>
-                                <input className="form_input" type="text" id="customer_name"/>
+                                <input 
+                                    name="customerEmail"
+                                    onChange={onChangeHandler}
+                                    className="form_input" 
+                                    type="email" 
+                                    id="customer_name"/>
 
                                 <label htmlFor="album_date">Album Date</label>
-                                <input className="form_input" type="date" id="album_date"/>
+                                <input 
+                                    name="albumDate"
+                                    onChange={onChangeHandler}
+                                    className="form_input" 
+                                    type="date" 
+                                    id="album_date"/>
 
 
                                 <input 
@@ -40,11 +71,6 @@ const AddPhotoModal = ({visible, setVisible}) => {
                                     type="button" 
                                     value="Create New Album"
                                     onClick={() => {
-                                        let album = {
-                                            name: "teste",
-                                            customerEmail: "eliezerbs99@gmail.com",
-                                            albumDate: "11/5/2020"
-                                        }
                                         createAlbum('UiLt3FYVBLT48HDHEGX7XIlQsi82', album)
                                     }}
                                 />
