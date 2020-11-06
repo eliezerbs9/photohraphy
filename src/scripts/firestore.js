@@ -19,8 +19,9 @@ export const createAlbum = async (uid, data) => {
             photographerId: uid,
             createdAt: new Date().toLocaleString(),
         })
-        .then(() => {
+        .then((result) => {
             console.log('Album created')
+            return result
         })
         .catch(error => {
             console.log('Error creating the album', error)

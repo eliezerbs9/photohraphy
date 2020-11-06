@@ -5,15 +5,18 @@ import {createAlbum} from '../../scripts/firestore'
 
 const AddPhotoModal = ({visible, setVisible}) => {
 
-    const [newAbum, setNewAlbum] = useState(null)
-    const [album, setAlbum] = useState({
+    const initialState = {
         photographerId: "",
         name: "",
         customerEmail: "",
         albumDate: "",
         createdAt: "",
         photos: []
-    })
+    }
+
+
+    const [newAbum, setNewAlbum] = useState(null)
+    const [album, setAlbum] = useState(initialState)
 
     const onChangeHandler = e => {
         e.preventDefault();
@@ -45,6 +48,7 @@ const AddPhotoModal = ({visible, setVisible}) => {
                                 <input
                                     name="name" 
                                     onChange={onChangeHandler}
+                                    value={album.name}
                                     className="form_input" 
                                     type="text" 
                                     id="album_name"/>
@@ -53,6 +57,7 @@ const AddPhotoModal = ({visible, setVisible}) => {
                                 <input 
                                     name="customerEmail"
                                     onChange={onChangeHandler}
+                                    value={album.customerEmail}
                                     className="form_input" 
                                     type="email" 
                                     id="customer_name"/>
@@ -61,6 +66,7 @@ const AddPhotoModal = ({visible, setVisible}) => {
                                 <input 
                                     name="albumDate"
                                     onChange={onChangeHandler}
+                                    value={album.albumDate}
                                     className="form_input" 
                                     type="date" 
                                     id="album_date"/>
@@ -71,8 +77,14 @@ const AddPhotoModal = ({visible, setVisible}) => {
                                     type="button" 
                                     value="Create New Album"
                                     onClick={() => {
-                                        createAlbum('UiLt3FYVBLT48HDHEGX7XIlQsi82', album)
-                                    }}
+                                         createAlbum('UiLt3FYVBLT48HDHEGX7XIlQsi82', album).then(() => {
+                                             alert("Album Successfuly created")
+                                             setAlbum(initialState)
+                                         }).catch(error => {
+                                             alert('There was an error')
+                                         })
+                                        
+                                   }}
                                 />
                             </div>
                         )}
