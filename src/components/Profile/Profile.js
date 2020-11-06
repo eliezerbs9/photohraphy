@@ -1,5 +1,4 @@
 import React, {useContext} from 'react'
-import {ProfileContext} from '../Providers/ProfileContext'
 import {AuthContext} from '../Providers/AuthContext'
 import useProfile from '../../hooks/useProfile'
 import EditProfileModal from './EditProfileModal'

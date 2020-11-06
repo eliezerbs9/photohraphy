@@ -3,10 +3,9 @@ import Modal from '../Layout/Modal'
 import UploadPhoto from './UploadPhoto'
 import {createAlbum} from '../../scripts/firestore'
 
-const AddPhotoModal = ({visible, setVisible}) => {
+const AddPhotoModal = ({user, visible, setVisible}) => {
 
     const initialState = {
-        photographerId: "",
         name: "",
         customerEmail: "",
         albumDate: "",
@@ -27,7 +26,7 @@ const AddPhotoModal = ({visible, setVisible}) => {
     }
 
     const saveAlbum = () => {
-        createAlbum('UiLt3FYVBLT48HDHEGX7XIlQsi82', album).then(() => {
+        createAlbum(user.uid, album).then(() => {
             alert("Album Successfuly created")
             setAlbum(initialState)
         }).catch(error => {

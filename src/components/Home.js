@@ -1,7 +1,7 @@
 import React from 'react'
 import Profile from './Profile//Profile'
 import Navbar from './Navbar'
-import Albuns from './Albuns/Albuns'
+import Albums from './Albuns/Albums'
 
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
             <Navbar />
             <div className="content">
                 <Profile />
-                <Albuns />
+                <Albums />
             </div>
         </main>
     )
