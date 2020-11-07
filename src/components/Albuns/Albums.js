@@ -1,7 +1,9 @@
 import React, {useContext ,useState} from 'react'
-import AddPhotoModal from '../Photos/AddPhotoModal'
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {AuthContext} from '../Providers/AuthContext'
+import AddPhotoModal from '../Photos/AddPhotoModal'
 import AlbumsGrid from './AlbumsGrid'
+import Album from './Album'
 
 
 const Albums = () => {
@@ -20,7 +22,13 @@ const Albums = () => {
                         setShowModal(true)
                     }}
                     >Add Album</a>
-                    <AlbumsGrid user={user}/>
+                    <Router>
+                        <Switch>
+                            <Route exact path="/" render={() => <AlbumsGrid user={user}/>} />
+                            <Route path="/album/:id" render={({match}) => <Album id={match.params.id}/>} />
+                        </Switch>
+                    </Router>
+                    
             </div>
         </>
     )

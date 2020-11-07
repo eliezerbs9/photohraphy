@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import './App.css';
 import Home from './components/Home'
 import Login from './components/Login'
@@ -25,7 +25,6 @@ function App() {
               <Route path="/signin" exact component={SignIn} />
               <Route path="/modal" exact component={Modal} />
             </Switch>
-              <EditProfileModal />
           </div>
         </Router>
       </ProfileProvider>

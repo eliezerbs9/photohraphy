@@ -1,5 +1,5 @@
 import React from 'react'
-import Album from './Album'
+import AlbumCard from './AlbumCard'
 import useAlbums from '../../hooks/useAlbums'
 
 
@@ -14,7 +14,7 @@ const AlbumsGrid = ({user}) => {
                 <div className="albums_grid">
                     {albums.map(album => {
                         return (
-                            <Album album={album} />
+                            <AlbumCard album={album} />
                         )
                     })}
                 </div>
