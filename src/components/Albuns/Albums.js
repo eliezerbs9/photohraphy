@@ -12,14 +12,14 @@ const Albums = () => {
     return (
         <>
             <AddPhotoModal visible={showModal} setVisible={setShowModal} user={user}/>
-            <div className="albuns">
+            <div className="albums">
                 <a 
                     className="btn btn--primary"
                     onClick={() => {
                         console.log('add photo modal')
                         setShowModal(true)
                     }}
-                    >Add Photo</a>
+                    >Add Album</a>
                     <AlbumsGrid user={user}/>
             </div>
         </>

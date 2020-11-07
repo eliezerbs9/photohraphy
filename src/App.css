@@ -282,13 +282,19 @@ body{
     height: 5px;
     background-color: var(--primary);
 }
-.albuns{
-    min-height: 100vh;
+.albums{
+    display: grid;
+    grid-template-areas: 
+        "btn"
+        "albums";
+    grid-template-rows: 50px auto;
     margin-top: 10px;
     background-color: white;
     width: 100%;
 }
-    .albuns .btn{
+    .albums .btn{
+        grid-area: btn;
+        display: block;
         float: right;
         margin-left: auto;
     }
@@ -319,14 +325,17 @@ body{
     }
 .albums_grid{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-area: albums;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     padding: 10px 20px;
+    justify-items: center;
 }
 .album{
+    align-self: center;
     border: 1px solid var(--primary);
-    width: 200px;
+    width: 300px;
     height: 200px;
     padding: 15px;
 }
