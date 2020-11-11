@@ -14,7 +14,7 @@ const AlbumsGrid = ({user}) => {
                 <div className="albums_grid">
                     {albums.map(album => {
                         return (
-                            <AlbumCard album={album} />
+                            <AlbumCard key={album.id} album={album} />
                         )
                     })}
                 </div>

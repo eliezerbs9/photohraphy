@@ -29,10 +29,25 @@ export const createAlbum = async (uid, data) => {
 }
 
 export const updateAlbum = async (uid, data) => {
-    let docRef = firestore.collection('albums').doc(uid)
+    let docRef = firestore.collection('albums').doc(uid).collection('myAlbums')
         docRef.set(data)
             .then(() => {
                 console.log('Album updated')
+            }).catch(error => {
+                console.error('Error: ', error)
+            })
+}
+
+export const getAlbum = async (uid, album_id) => {
+    let docRef = firestore.collection('albums').doc(uid).collection('myAlbums').doc(album_id)
+        docRef.get()
+            .then((doc) => {
+                if(doc.exists){
+                    return doc.data()
+                }
+                else{
+                    console.log('nothing found')
+                }
             }).catch(error => {
                 console.error('Error: ', error)
             })

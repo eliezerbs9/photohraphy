@@ -25,7 +25,7 @@ const Albums = () => {
                     <Router>
                         <Switch>
                             <Route exact path="/" render={() => <AlbumsGrid user={user}/>} />
-                            <Route path="/album/:id" render={({match}) => <Album id={match.params.id}/>} />
+                            <Route path="/album/:id" render={({match}) => <Album user={user} album_id={match.params.id}/>} />
                         </Switch>
                     </Router>
                     
