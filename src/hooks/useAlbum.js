@@ -7,7 +7,7 @@ const useAlbum = (uid, album_id) => {
     useEffect(() => {
         const albumRef = firestore.collection('albums').doc(uid).collection('myAlbums').doc(album_id)
 
-        const unsub =  albumRef.get().then((doc) => {
+        albumRef.get().then((doc) => {
             if(doc.exists){
                 console.log('Album: ', doc.data())
                 setAlbum(doc.data())
@@ -15,7 +15,6 @@ const useAlbum = (uid, album_id) => {
                 console.log('No album was found')
             }
         })
-            return () => unsub()
     }, [uid, album_id])
 
     return {album}

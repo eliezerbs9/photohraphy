@@ -8,14 +8,12 @@ const PrivateRoute = ({component: Component, ...rest}) => {
     
     const {user} = useContext(AuthContext)
 
-    console.log(+user)
-
     return (
         <Route 
             {...rest} 
             render={props => {
                 if(!!user){
-                    return <Component {...props} />
+                    return <Component {...props} user={user}/>
                 }
                 else{
                     console.log('fora da route authenticated')

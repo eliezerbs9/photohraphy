@@ -1,14 +1,15 @@
-import React, {useState, useEffect} from 'react'
-import {getAlbum} from '../../scripts/firestore'
+import React, {useContext, useEffect} from 'react'
 import useAlbum from '../../hooks/useAlbum'
+import {useRouteMatch} from 'react-router-dom'
 
-const Album = ({user, album_id}) => {
+const Album = ({user}) => {
 
-    const {album} = useAlbum(user.uid, album_id)
+    const {params} = useRouteMatch()
+    const {album} = useAlbum(user.uid, params.id)
 
     useEffect(() => {
        console.log('Album component', album)
-    }, [album])
+    }, [album, user])
 
     return (
         <>
@@ -18,7 +19,7 @@ const Album = ({user, album_id}) => {
                 </div>
             )}
             {!album && (
-                <p>No Album</p>
+                <p>Loading</p>
             )}
         </>
      

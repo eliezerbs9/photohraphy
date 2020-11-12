@@ -11,9 +11,8 @@ export const AuthProvider = ({children}) => {
 
     useEffect(() => {
         //SET-UP LISTENNER FOR USER'S CHANGES
-        auth.onAuthStateChanged((user) => {
-            console.log(user)
-            setUser(user)
+        auth.onAuthStateChanged(async (user) => {
+            const exec = await setUser(user);
         })
     }, [])
 
