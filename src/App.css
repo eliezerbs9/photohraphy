@@ -9,6 +9,23 @@ body{
     padding: 10px 10px 10px 0;
     margin: 0 20%;
 }
+.content_inner{
+    display: grid;
+    grid-template-areas: 
+        "btn"
+        "content";
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px auto;
+    width: 100%;
+    margin-top: 10px;
+    background-color: white;
+}
+    .content_inner .btn{
+            grid-area: btn;
+            display: block;
+            float: right;
+            margin-left: auto;
+    }
 #login{
     background-color: #2F003D;
     position: absolute;
@@ -282,50 +299,22 @@ body{
     height: 5px;
     background-color: var(--primary);
 }
-.albums{
-    display: grid;
-    grid-template-areas: 
-        "btn"
-        "albums";
-    grid-template-rows: 50px auto;
-    margin-top: 10px;
-    background-color: white;
-    width: 100%;
-}
-    .albums .btn{
-        grid-area: btn;
-        display: block;
-        float: right;
-        margin-left: auto;
-    }
-.add_photo{
+.modal_form{
     background-color: white;
     min-height: 150px;
     min-width: 400px;
     max-width: 30vw;
     max-height: 70vh; 
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: column;
 }
-    .add_photo_form{
-        padding: 20px 50px;
-        display: flex;
-        flex-direction: column;
-    }
-    .add_photo_opt{
-        height: 100px;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;   
-
-    }
-.new_album{
-    width: 100%;
-}
-    .new_album .btn{
+    .modal_form .btn{
         margin-top: 20px;
     }
 .albums_grid{
     display: grid;
-    grid-area: albums;
+    grid-area: content;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     grid-column-gap: 10px;
     grid-row-gap: 10px;
@@ -355,7 +344,40 @@ body{
         margin: 0;
         font-style: italic;
     }
-    .album_header,
-    .album_date{
+    .album_card_header,
+    .album_card_date{
         padding-top: 5px
     }
+    a .album_card{
+        color: black;
+        font-style: normal;
+        text-decoration: none;
+    }
+    a .album_card:visited{
+        color: black;
+        font-style: none;
+        text-decoration: none;
+    }
+.album{
+    background-color: white;
+    min-height: 600px;
+}
+    .album .btn{
+        grid-area: btn;
+        display: block;
+        float: right;
+        margin-left: auto;
+    }
+    .album_info p{
+        display: block;
+        margin: 0;
+    }
+.photo_gtid{
+    display: grid;
+    grid-area: content;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    padding: 10px 20px;
+    justify-items: center;
+}

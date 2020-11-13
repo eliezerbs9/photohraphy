@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react'
-import AddPhotoModal from '../Photos/AddPhotoModal'
+import AddAlbumModal from '../Albuns/AddAlbumModal'
 import AlbumsGrid from './AlbumsGrid'
 import {AuthContext} from '../Providers/AuthContext'
 
@@ -12,16 +12,16 @@ const Albums = () => {
 
     return (
         <>
-            <AddPhotoModal visible={showModal} setVisible={setShowModal} user={user}/>
-            <div className="albums">
+            <AddAlbumModal visible={showModal} setVisible={setShowModal} user={user}/>
+            <div className="content_inner">
                 <a 
                     className="btn btn--primary"
                     onClick={() => {
-                        console.log('add photo modal')
+                        console.log('add albunm modal')
                         setShowModal(true)
                     }}
-                    >Add Album</a>
-                    <AlbumsGrid user={user} />
+                >Add Album</a>
+                <AlbumsGrid user={user} />
             </div>
         </>
     )

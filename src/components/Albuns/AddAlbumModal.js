@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import Modal from '../Layout/Modal'
-import UploadPhoto from './UploadPhoto'
 import {createAlbum} from '../../scripts/firestore'
 
 const AddPhotoModal = ({user, visible, setVisible}) => {
@@ -13,6 +12,8 @@ const AddPhotoModal = ({user, visible, setVisible}) => {
         photos: []
     }
 
+
+    const [newAbum, setNewAlbum] = useState(null)
     const [album, setAlbum] = useState(initialState)
 
     const onChangeHandler = e => {
@@ -23,7 +24,6 @@ const AddPhotoModal = ({user, visible, setVisible}) => {
         })
     }
 
-    //CHANGE IT TO SAVE PHOTO
     const saveAlbum = () => {
         createAlbum(user.uid, album).then(() => {
             alert("Album Successfuly created")
@@ -68,7 +68,7 @@ const AddPhotoModal = ({user, visible, setVisible}) => {
                     <input 
                         className="btn btn--lg btn--primary" 
                         type="button" 
-                        value="Upload Photos"
+                        value="Create New Album"
                         onClick={saveAlbum}
                     />
                 </form>
