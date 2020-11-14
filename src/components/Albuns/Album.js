@@ -17,8 +17,9 @@ const Album = ({user}) => {
 
     return (
         <>
-            <AddPhotoModal visible={showModal} setVisible={setShowModal}/>
             {album && (
+            <>
+                <AddPhotoModal visible={showModal} setVisible={setShowModal} album={album}/>
                 <div className="content_inner">
                     <a 
                         className="btn btn--primary"
@@ -37,6 +38,8 @@ const Album = ({user}) => {
                         
                     </div>
                 </div>
+            </>
+
             )}
             {!album && (
                 <p>Loading</p>

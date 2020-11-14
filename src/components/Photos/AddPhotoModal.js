@@ -2,76 +2,37 @@ import React, {useState} from 'react'
 import Modal from '../Layout/Modal'
 import UploadPhoto from './UploadPhoto'
 import {createAlbum} from '../../scripts/firestore'
+import AddPhoto from './AddPhoto'
 
-const AddPhotoModal = ({user, visible, setVisible}) => {
+const AddPhotoModal = ({user, visible, setVisible, album}) => {
 
-    const initialState = {
-        name: "",
-        customerEmail: "",
-        albumDate: "",
-        createdAt: "",
-        photos: []
-    }
+    
 
-    const [album, setAlbum] = useState(initialState)
-
-    const onChangeHandler = e => {
-        e.preventDefault();
-        setAlbum({
-            ...album,
-            [e.target.name]: e.target.value,
-        })
-    }
+    // const onChangeHandler = e => {
+    //     e.preventDefault();
+    //     setAlbum({
+    //         ...album,
+    //         [e.target.name]: e.target.value,
+    //     })
+    // }
 
     //CHANGE IT TO SAVE PHOTO
-    const saveAlbum = () => {
-        createAlbum(user.uid, album).then(() => {
-            alert("Album Successfuly created")
-            setAlbum(initialState)
-        }).catch(error => {
-            alert('There was an error')
-        })
-    }
+    // const saveAlbum = () => {
+    //     createAlbum(user.uid, album).then(() => {
+    //         alert("Album Successfuly created")
+    //         setAlbum(initialState)
+    //     }).catch(error => {
+    //         alert('There was an error')
+    //     })
+    // }
 
     return (
         <>
             <Modal visible={visible} setVisible={setVisible}>
-                <form className="modal_form">
-                    <label htmlFor="album_name">Album Name</label>
-                    <input
-                        name="name" 
-                        onChange={onChangeHandler}
-                        value={album.name}
-                        className="form_input" 
-                        type="text" 
-                        id="album_name"/>
+                <div className="modal_form">
+                    <AddPhoto album={album}/>
 
-                    <label htmlFor="customer_email">Customer Email</label>
-                    <input 
-                        name="customerEmail"
-                        onChange={onChangeHandler}
-                        value={album.customerEmail}
-                        className="form_input" 
-                        type="email" 
-                        id="customer_name"/>
-
-                    <label htmlFor="album_date">Album Date</label>
-                    <input 
-                        name="albumDate"
-                        onChange={onChangeHandler}
-                        value={album.albumDate}
-                        className="form_input" 
-                        type="date" 
-                        id="album_date"/>
-
-
-                    <input 
-                        className="btn btn--lg btn--primary" 
-                        type="button" 
-                        value="Upload Photos"
-                        onClick={saveAlbum}
-                    />
-                </form>
+                </div>
             </Modal>
         </>
     )
