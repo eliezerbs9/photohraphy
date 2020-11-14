@@ -12,15 +12,6 @@ const Home = ({user}) => {
 
     const {url, path} = useRouteMatch()
 
-
-    console.log('path; ',path)
-
-    const Teste = () => {
-        return (
-            <p>Shit</p>
-        )
-    }
-
     return (
         <main className="home">
             <Navbar />

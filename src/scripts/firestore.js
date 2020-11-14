@@ -29,6 +29,7 @@ export const createAlbum = async (uid, data) => {
 }
 
 export const updateAlbum = async (uid, album_id, data) => {
+    console.log('UPDATE ALBUM: ', album_id)
     let docRef = firestore.collection('albums').doc(uid).collection('myAlbums').doc(album_id)
         docRef.set(data)
             .then(() => {
@@ -38,8 +39,20 @@ export const updateAlbum = async (uid, album_id, data) => {
             })
 }
 
-export const addPhoto = async =(uid, album_id) => {
-    let docRef = firestore.collection('albums').doc(uid).collection('myAlbums').doc(album_id)
+export const addPhoto = async (uid, album, data) => {
+    let docRef = firestore.collection('albums').doc(uid).collection('myAlbums').doc(album.id)
+    docRef.get()
+        .then(doc => {
+            if(doc.exists){
+                console.log('data found ', doc.data())
+                docRef.update({
+                    photos: firestore.af.firebase_.firestore.FieldValue.arrayUnion("AI credo")
+                })
+            }else{
+                console.log('no data found')
+            }
+        })
+  
 
 }
 

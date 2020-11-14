@@ -1,28 +1,28 @@
 import React, {useContext, useEffect} from 'react'
 import useStorage from '../../hooks/useStorage'
-import {updateAlbum} from '../../scripts/firestore'
-import AuthProvider from '../Providers/AuthContext'
+import {addPhoto} from '../../scripts/firestore'
+import {AuthContext} from '../Providers/AuthContext'
 
 
 const PhotoUploader = ({file, album}) => {
 
     const {url, progress} = useStorage(file)
-    const {user} = useContext(AuthProvider)
+    const {user} = useContext(AuthContext)
 
     useEffect(() => {
         if(url){
-            updateAlbum(
+            console.log('useEffect PhotoUploader: ', user)
+            addPhoto(
                 user.uid, 
-                album.id, 
+                album, 
                 {
-                    ...album,
-                    [album.photos]: {
-                        url: url,
-                        createdAt: "today"
-                    }
-                })
+                    name: file.name,
+                    url: file.url,
+                    createdAt: new Date().toLocaleString(),
+                }
+            )
         }
-    }, [url, setProfile])
+    }, [user ,url, addPhoto])
 
     return (
         <div className="progress_bar" style={{width: progress + '%'}}></div>

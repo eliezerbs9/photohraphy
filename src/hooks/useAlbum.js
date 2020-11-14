@@ -9,8 +9,7 @@ const useAlbum = (uid, album_id) => {
 
         albumRef.get().then((doc) => {
             if(doc.exists){
-                console.log('Album: ', doc.data())
-                setAlbum(doc.data())
+                setAlbum({...doc.data(), id: doc.id})
             }else{
                 console.log('No album was found')
             }

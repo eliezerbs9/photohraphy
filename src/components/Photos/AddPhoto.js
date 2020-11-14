@@ -34,6 +34,8 @@ const AddPhoto = ({album}) => {
         }
     }
 
+    console.log('add photo album: ', album)
+
     return (
         <>
         <label>Add Photo</label>
@@ -52,8 +54,10 @@ const AddPhoto = ({album}) => {
             <>
                 {files.map((file) => {
                     return(
-                        <p  style={{margin: '0'}}>{file.name}</p>
-
+                        <>
+                            <p style={{margin: '0'}}>{file.name}</p>
+                            <PhotoUploader album={album} file={file}/>
+                        </>
                     )
                 })}
             </>
