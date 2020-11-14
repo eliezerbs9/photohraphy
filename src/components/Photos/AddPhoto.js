@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
+import PhotoUploader from './PhotoUploader'
 
-const AddPhoto = ({album, setFileRef, setErrorRef}) => {
-    const [file, setFile] = useState(null);
-    const [errors, setErrors] = useState()
-    const [errorCounter, setErrorCounter] = useState(0)
+const AddPhoto = ({album}) => {
+    const [files, setFiles] = useState([]);
+    const [errors, setErrors] = useState([])
 
 
     const fileTypes = ['image/png', 'image/jpeg', 'image/jpg']
@@ -12,31 +12,25 @@ const AddPhoto = ({album, setFileRef, setErrorRef}) => {
         let selected = e.target.files
         let valid = []
         let notValid = []
-        if(selected.length > 0){
-            console.log('More than one')
+        if(selected.length >= 0){
             for(var i=0; i < selected.length; i++){
                 if(fileTypes.includes(selected[i].type)){
-                    console.log(selected[i])
-                    valid.push(selected)
+                    valid.push(selected[i])
                 }
                 else{
-                    console.log('error')
                     notValid.push({
-                        file: file,
+                        file: selected[i],
                         error: "Please selected an image file (png or jpeg)"
                     })
                 }
             }
             setErrors(notValid)
-            setFile(valid)
+            setFiles(valid)
         }else{
-            if(selected && fileTypes.includes(selected.type)){
-                console.log(selected)
-                setFile(selected);
-            }else{
-                setFile(null);
-                setErrors('Please selected an image file (png or jpeg)')
-            }
+            errors.push({
+                file: "No file",
+                error: "This file cannot be uploaded"
+            })
         }
     }
 
@@ -54,9 +48,23 @@ const AddPhoto = ({album, setFileRef, setErrorRef}) => {
             />
             <span className="btn btn--lg btn--success">Select Files</span>
         </label>
-        {/* {errors && <p>{imageError}</p>} */}
-        {file && <p style={{margin: "0px"}}>{file.name}</p>}
-        {/* {file && <ProfilePhotoUploader file={file} profile={profile} setProfile={setProfile}/>} */}
+        {files.length > 0 && (
+            <>
+                {files.map((file) => {
+                    return(
+                        <p  style={{margin: '0'}}>{file.name}</p>
+
+                    )
+                })}
+            </>
+        )}
+        {errors && (
+            <>
+                {errors.map(error =>{
+                    console.log('Error: ', error)
+                })}
+            </>
+        )}
 
         </>
     )
