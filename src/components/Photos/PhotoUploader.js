@@ -11,18 +11,15 @@ const PhotoUploader = ({file, album}) => {
 
     useEffect(() => {
         if(url){
-            console.log('useEffect PhotoUploader: ', user)
-            addPhoto(
-                user.uid, 
-                album, 
-                {
-                    name: file.name,
-                    url: file.url,
-                    createdAt: new Date().toLocaleString(),
-                }
-            )
+            let data = {
+                name: file.name,
+                url: url,
+                createdAt: new Date().toLocaleString(),
+            }
+            console.log('useEffect PhotoUploader: ', data)
+            addPhoto(user.uid, album, data)
         }
-    }, [user ,url, addPhoto])
+    }, [file ,url, addPhoto])
 
     return (
         <div className="progress_bar" style={{width: progress + '%'}}></div>
