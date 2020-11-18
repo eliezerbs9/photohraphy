@@ -1,6 +1,7 @@
 import React, {useState ,useEffect} from 'react'
 import useAlbum from '../../hooks/useAlbum'
 import AddPhotoModal from '../Photos/AddPhotoModal'
+import PhotoGrid from '../Photos/PhotoGrid'
 import {useRouteMatch} from 'react-router-dom'
 
 const Album = ({user}) => {
@@ -34,9 +35,8 @@ const Album = ({user}) => {
                         <p>{album.albumDate}</p>
                         <p>{album.createdAt}</p>
                     </div>
-                    <div className="photo_grid">
-                        
-                    </div>
+                    <PhotoGrid album_id={album.id} user_id={user.id} />
+               
                 </div>
             </>
 

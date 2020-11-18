@@ -42,12 +42,16 @@ export const updateAlbum = async (uid, album_id, data) => {
 export const addPhoto = async (uid, album, data) => {
     console.log('data passed: ', data)
     let docRef = firestore.collection('albums').doc(uid).collection('myAlbums').doc(album.id).collection('photos')
-    await docRef.add(data)
-    console.log('docRef: ', docRef.id)
+    try{
+        await docRef.add(data)
+        console.log('docRef: ', docRef.id)
+    }catch(error){
+        console.error('Error: ',error)
+    }
 }
 
 export const getAlbum = async (uid, album_id) => {
-    let docRef = firestore.collection('albums').doc(uid).collection('myAlbums').doc(album_id)
+    let docRef = firestore.collection('albums').doc(uid).collection('myAlbums').doc(album_id).listCollections()
         docRef.get()
             .then((doc) => {
                 if(doc.exists){

@@ -7,13 +7,21 @@ const useAlbum = (uid, album_id) => {
     useEffect(() => {
         const albumRef = firestore.collection('albums').doc(uid).collection('myAlbums').doc(album_id)
 
-        albumRef.get().then((doc) => {
-            if(doc.exists){
-                setAlbum({...doc.data(), id: doc.id})
-            }else{
-                console.log('No album was found')
+        const getAlbum = async () => {
+            try{
+                let album = await albumRef.get()
+                if(album){
+                    setAlbum({...album.data(), id: album.id})
+                }
+            }catch(err){
+                console.error('Error: ', err)
+    
             }
-        })
+        }
+
+        getAlbum()
+
+
     }, [uid, album_id])
 
     return {album}
