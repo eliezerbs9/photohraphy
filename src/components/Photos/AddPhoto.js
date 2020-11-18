@@ -34,8 +34,6 @@ const AddPhoto = ({album}) => {
         }
     }
 
-    console.log('add photo album: ', album)
-
     return (
         <>
         <label>Add Photo</label>
