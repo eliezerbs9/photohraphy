@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import {AuthContext} from '../Providers/AuthContext'
+import PhotoCard from './PhotoCard'
 
 import usePhotos from '../../hooks/usePhotos'
 
@@ -14,7 +15,7 @@ const PhotoGrid = ({album_id}) => {
             <div className="photo_grid">
                 {photos.map(photo => {
                     return (
-                        <p key={photo.id}>{photo.name}</p>  
+                        <PhotoCard key={photo.id} photo={photo} />
                     )
                 })}
                                 

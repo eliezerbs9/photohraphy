@@ -372,12 +372,23 @@ body{
         display: block;
         margin: 0;
     }
-.photo_gtid{
+.photo_grid{
     display: grid;
     grid-area: content;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     padding: 10px 20px;
     justify-items: center;
 }
+.photo_card{
+    max-width: 100px;
+    max-height: 300px;
+}
+    .photo_card_img{
+        max-width: 100%;
+    }
+    .photo_card_name{
+        padding: 0;
+        font-size: x-small;
+    }
