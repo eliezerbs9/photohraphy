@@ -1,5 +1,15 @@
 import {firestore} from '../firebase/config'
 
+export const createProfile = async (uid, data) => {
+    let docRef = firestore.collection('profile')
+    try{
+        await docRef.add(data)
+        console.log('creating new profile: ', data)
+    }catch(err){
+        console.log('Error: ', err)
+    }
+}
+
 export const updateProfile = async (uid, data) => {
     let docRef = firestore.collection('profile').doc(uid)
         docRef.set(data)

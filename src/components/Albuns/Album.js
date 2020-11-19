@@ -1,11 +1,13 @@
-import React, {useState ,useEffect} from 'react'
+import React, {useState ,useEffect, useContext} from 'react'
+import {AuthContext} from '../Providers/AuthContext'
 import useAlbum from '../../hooks/useAlbum'
 import AddPhotoModal from '../Photos/AddPhotoModal'
 import PhotoGrid from '../Photos/PhotoGrid'
 import {useRouteMatch} from 'react-router-dom'
 
-const Album = ({user}) => {
+const Album = () => {
 
+    const {user} = useContext(AuthContext)
     const {params} = useRouteMatch()
     const {album} = useAlbum(user.uid, params.id)
     const [showModal, setShowModal] = useState(false)

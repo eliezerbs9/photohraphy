@@ -7,7 +7,7 @@ import {Link, useRouteMatch} from 'react-router-dom'
 const AlbumsGrid = ({user}) => {
     
     const {albums} = useAlbums(user.uid)
-    const {url, path} = useRouteMatch()
+    const {url} = useRouteMatch()
 
     return(
         <>

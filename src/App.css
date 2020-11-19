@@ -207,6 +207,22 @@ body{
         font-weight: 300;
         font-style: italic;
     }
+    .profile_create{
+        flex-direction: column;
+        height: 150px;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    .profile_create p{
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+    .profile_create .btn{
+        width: 150px;
+    }
+
 
 .navbar{
     background-color: white;
@@ -278,12 +294,12 @@ body{
     border: 2px solid var(--primary);
     opacity: 1; */
 }
-    .edit_profile__form{
+    .profile_form{
         padding: 20px 50px;
         display: flex;
         flex-direction: column;
     }
-    .edit_profile__form .btn--primary{
+    .profile_form .btn--primary{
         height: 30px;
         position: absolute;
         width: 70px;
@@ -292,7 +308,7 @@ body{
         margin-bottom: 20px;
         margin-right: 50px;
     }
-    .edit_profile__form .btn--success{
+    .profile_form .btn--success{
         width: 100px;
     }
 .progress_bar{

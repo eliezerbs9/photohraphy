@@ -1,15 +1,16 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import {AuthContext} from '../Providers/AuthContext'
 import useProfile from '../../hooks/useProfile'
 import EditProfileModal from './EditProfileModal'
-import { useState } from 'react'
-
+import CreateProfile from './CreateProfile'
 
 const Profile = () => {
 
     const {user} = useContext(AuthContext)
-    const {profile} = useProfile(user.uid)
+    const {profile} = useProfile(user)
     const [showModal, setShowModal] = useState(false)
+    console.log('user: ', user)
+
     return (
         <>  
             {(user && profile) &&
@@ -47,6 +48,11 @@ const Profile = () => {
                 </header>
             </>  
             }
+            {(user && !profile) && (
+                <>
+                    <CreateProfile />
+                </>
+            )}
         </> 
 )
     

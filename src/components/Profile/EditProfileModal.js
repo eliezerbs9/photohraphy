@@ -5,9 +5,14 @@ import {updateProfile} from '../../scripts/firestore'
 import Modal from '../Layout/Modal'
 
 
+//RECEIVES PROPS TO SHOW OR HIDE THE MODAL
+// RECEIVES THE PRE EXISTING PROFILE DATA
 const EditProfileModal = ({visible, setVisible, profile}) => {
 
+    //GET USER FROM CONTEXT
     const {user} = useContext(AuthContext)
+
+    //STATE TO STORE THE TEMP. DATA TO UPDATE THE NEW PROFILE
     const [editProfile, setEditProfile] = useState({...profile}) 
         
     const onChangeHandler = (e) => {
@@ -66,6 +71,8 @@ const EditProfileModal = ({visible, setVisible, profile}) => {
                                 className="btn btn--lg btn--primary" 
                                 value="Submit"
                                 onClick={() => {
+                                    //UPDATES THE PROFILE USING THE USER ID AS REFERENCE FOR THE FIRST ARGUMENT
+                                    //THE SECOND ARGUMENT IS THE NEW PROFILE DATA THAT IT WILL BE UPDATED
                                     updateProfile(user.uid, editProfile)
                                 }}
                             />
