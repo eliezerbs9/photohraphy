@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useEffect, useContext, useState} from 'react'
 import EditProfilePhoto from './EditProfilePhoto'
 import {AuthContext} from '../Providers/AuthContext'
 import {updateProfile} from '../../scripts/firestore'
@@ -23,12 +23,17 @@ const EditProfileModal = ({visible, setVisible, profile}) => {
         })
     }
 
+    useEffect(() => {
+        console.log('new profile', editProfile)
+    }, [editProfile, setEditProfile])
+
+
     return (
         <>
             {profile && (
                 <Modal visible={visible} setVisible={setVisible}>
                     <div className="edit_profile">
-                        <form className="edit_profile__form">
+                        <form className="profile_form">
                             <EditProfilePhoto profile={editProfile} setProfile={setEditProfile}/>
                             <label htmlFor="name">Name</label>
                             <input 

@@ -1,4 +1,5 @@
 import {auth} from '../firebase/config'
+import {createProfile} from './firestore'
 
 // const [user, setUser] = useState(null)
 
@@ -20,13 +21,19 @@ export const logout = () => {
 export const register = async (name, email, password) => {
     console.log(`REGISTERING ${name} ${email} ${password}`)
     try{
-        await auth.createUserWithEmailAndPassword(email, password)
+        let user = await auth.createUserWithEmailAndPassword(email, password)
+        let profile = {
+            about_me: "",
+            birth_date: "",
+            location: "",
+            name: name,
+            photo: ""
+        }
+        console.log('REGISTERED USER: ', user)
+        createProfile(user.user.uid, profile)
     }catch(error){
         console.error(error)
     }
-    return await auth.currentUser.updateProfile({
-        displayName: name
-    })
 }
 
 export const currentUser = async () => {

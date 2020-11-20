@@ -7,6 +7,7 @@ const ProfilePhotoUploader = ({file, profile, setProfile}) => {
 
     useEffect(() => {
         if(url){
+            console.log('profile photo url: ', url)
             setProfile({
                 ...profile,
                 photo: url
