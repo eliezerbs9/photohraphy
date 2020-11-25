@@ -123,13 +123,14 @@ body{
         margin-top: 20px;
     }
 .btn{
+    color: var(--primary);
+    background-color: white;
     display: inline-block;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
     padding: 4px 2px;
     height: 20px;
-    background-color: transparent;
     width: auto;
 }
     .btn:visited{

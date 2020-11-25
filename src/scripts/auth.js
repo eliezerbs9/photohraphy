@@ -9,7 +9,8 @@ export const login =  async (email, password) => {
         console.log('log in')
         await auth.signInWithEmailAndPassword(email, password)
     }catch(err){
-        console.log(err)
+        console.error('Failed to authenticate: ', err)
+        return err
     }
 }
 

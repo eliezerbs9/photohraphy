@@ -10,6 +10,7 @@ const Login = () => {
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
     const {user} = useContext(AuthContext)
+    const [error, setError] = useState(null)
 
     return (
         user ? (
@@ -40,8 +41,18 @@ const Login = () => {
                     <p className="login_box__msg login_box__msg--error"></p>
                     <p className="login_box__msg">Dont have an account yet ? <span><Link to='signin'>click here</Link></span></p>
 
-                    <button className="btn btn--lg"  onClick={ () => {
-                        login(email, password);
+                    <div className="output">
+                        {error && (
+                            <p style={{color: 'red', margin: '0', fontSize: 'xx-small'}}>{error}</p>
+                        )}
+                    </div>
+
+                    <button className="btn btn--lg"  onClick={async (result) => {
+                        result = await login(email, password);
+                        console.log('result: ', result)
+                        if(!result.a){
+                            setError(result.message)
+                        }
                     }}>Login</button>
                 </div>
             </section>

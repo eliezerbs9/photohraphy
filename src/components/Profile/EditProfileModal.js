@@ -18,7 +18,7 @@ const EditProfileModal = ({visible, setVisible, profile}) => {
     const onChangeHandler = (e) => {
         e.preventDefault();
         setEditProfile({
-            ...profile, 
+            ...editProfile, 
             [e.target.name]: e.target.value
         })
     }
