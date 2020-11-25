@@ -31,6 +31,7 @@ export const register = async (name, email, password) => {
         }
         console.log('REGISTERED USER: ', user)
         createProfile(user.user.uid, profile)
+        return user.user
     }catch(error){
         console.error(error)
     }

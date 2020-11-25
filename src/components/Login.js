@@ -1,7 +1,8 @@
 import React, {useState, useContext} from 'react'
-import {login, currentUser} from '../scripts/auth'
+import {login} from '../scripts/auth'
 import {Redirect} from 'react-router-dom'
 import {AuthContext} from './Providers/AuthContext'
+import {Link} from 'react-router-dom'
 
 
 const Login = () => {
@@ -37,7 +38,7 @@ const Login = () => {
 
 
                     <p className="login_box__msg login_box__msg--error"></p>
-                    <p className="login_box__msg">Dont have an account yet ? <span>click here</span></p>
+                    <p className="login_box__msg">Dont have an account yet ? <span><Link to='signin'>click here</Link></span></p>
 
                     <button className="btn btn--lg"  onClick={ () => {
                         login(email, password);

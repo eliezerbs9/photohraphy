@@ -43,6 +43,10 @@ body{
     /* align-items: center; */
     padding: 0 30px;
 }
+    .login_box a,
+    .login_box a:visited{
+        color: white;
+    }
     .login_box__label{
         color: white;
         align-self: flex-start;
@@ -91,6 +95,10 @@ body{
         left: 50%;
         transform: translateX(-50%);
         margin-top: 10px;
+    }
+    .register_box a,
+    .register_box a:visited{
+        color: white;
     }
     .register_box__label{
         color: white;
