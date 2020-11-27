@@ -13,8 +13,9 @@ const PhotoGrid = ({album_id}) => {
     const [photo, setPhoto] = useState(null)
 
     const openModal = (e, photo) => {
-        if(e.target.classList.contains('photo_card_img')){
-            console.log('SHow Photo: ', photo)
+        let pattern = /^photo_card_.*/.test(e.target.classList)
+        console.log(pattern)
+        if(pattern){
             setPhoto(photo)
             setShowModal(true)
         }
