@@ -42,7 +42,9 @@ const UploadPhoto = () => {
                 <span className="btn btn--success">Upload Pootos</span>
             </label>
             <div className="photo_uploader_output">
-                {imageError && <p>{imageError}</p>}
+                {imageError && (
+                    <p style={{color: 'red', margin:'0'}}>{imageError}</p>)
+                }
                 {files && files.map(file => <p style={{margin: "0"}}>{file.name}</p>)}
             </div>
         </>

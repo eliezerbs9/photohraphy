@@ -12,6 +12,14 @@ const PhotoGrid = ({album_id}) => {
     const [showModal, setShowModal] = useState(false)
     const [photo, setPhoto] = useState(null)
 
+    const openModal = (e, photo) => {
+        if(e.target.classList.contains('photo_card_img')){
+            console.log('SHow Photo: ', photo)
+            setPhoto(photo)
+            setShowModal(true)
+        }
+    }
+
     return (
         <>
         {photos && (
@@ -21,11 +29,7 @@ const PhotoGrid = ({album_id}) => {
                     {photos.map(photo => {
                         return (
                             <a 
-                                onClick={() => {
-                                    console.log('SHow Photo: ', photo)
-                                    setPhoto(photo)
-                                    setShowModal(true)
-                                }}
+                                onClick={(e) => openModal(e, photo)}
                             >
                                     <PhotoCard key={photo.id} photo={photo}/>  
                             </a>

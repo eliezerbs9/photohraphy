@@ -62,9 +62,9 @@ const AddPhoto = ({album}) => {
         )}
         {errors && (
             <>
-                {errors.map(error =>{
-                    console.log('Error: ', error)
-                })}
+                {errors.map(error =>(
+                    <p style={{color: 'red', margin: '2px 0', fontSize: 'small'}}>X - {error.file.name} cannot be uploaded. {error.error}</p>
+                 ))}
             </>
         )}
 
