@@ -1,4 +1,4 @@
-import React, {useState,useContext} from 'react'
+import React, {useState,useContext, useEffect} from 'react'
 import {AuthContext} from '../Providers/AuthContext'
 import PhotoCard from './PhotoCard'
 import PhotoModal from './PhotoModal'
@@ -11,8 +11,11 @@ const PhotoGrid = ({album_id}) => {
     const {photos} = usePhotos(user.uid ,album_id)
     const [showModal, setShowModal] = useState(false)
     const [photo, setPhoto] = useState(null)
+    const [selectedPhotos, setSelectedPhotos] = useState([])
 
     const openModal = (e, photo) => {
+        //OPEN MODAL ONLYF IF THE USER CLICK ON THE PHOTO_CARD
+        //FIXED PROBLEM WITH CHECKING CARD CHECKBOX WITHOU OPENNING MODAL
         let pattern = /^photo_card_.*/.test(e.target.classList)
         console.log(pattern)
         if(pattern){
@@ -20,6 +23,25 @@ const PhotoGrid = ({album_id}) => {
             setShowModal(true)
         }
     }
+
+    const selectPhoto = (photo) => {
+        //ADD PHOTO TO ARRAY
+        setSelectedPhotos([
+            ...selectedPhotos,
+            photo
+        ])
+    }
+
+    const removePhoto = (photo) => {
+        //CREATES A NEW ARRAY WITH THE PHOTOS THAT DO NOT MATCH WITH THE EXPRESSION BELOW (ID)
+        let photos = selectedPhotos.filter((delete_photo) => delete_photo.id !== photo.id);
+        setSelectedPhotos(photos)
+    }
+
+
+    useEffect(() => {
+        console.log('useEffect PhotoGrid selected photos: ', selectedPhotos)
+    }, [selectedPhotos, setSelectedPhotos])
 
     return (
         <>
@@ -30,9 +52,10 @@ const PhotoGrid = ({album_id}) => {
                     {photos.map(photo => {
                         return (
                             <a 
+                                key={photo.id}
                                 onClick={(e) => openModal(e, photo)}
                             >
-                                    <PhotoCard key={photo.id} photo={photo}/>  
+                                    <PhotoCard  photo={photo} selectPhoto={selectPhoto} removePhoto={removePhoto}/>  
                             </a>
 
                         )
