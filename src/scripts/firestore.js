@@ -1,5 +1,15 @@
 import {firestore} from '../firebase/config'
 
+export const deletePhoto = async (uid, album_id ,photo) => {
+    try{
+        let docRef =  firestore.collection('albums').doc(uid).collection('myAlbums').doc(album_id).collection('photos').doc(photo.id)
+        await docRef.delete()
+        console.log('photo deleted')
+    }catch(error){
+        console.log('Error deleting photo: ',error)
+    }
+}
+
 export const createProfile = async (uid, data) => {
     let docRef = firestore.collection('profile').doc(uid)
     try{

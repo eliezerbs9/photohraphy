@@ -7,9 +7,9 @@ const useStorage = (file) => {
     const [url, setUrl] = useState(null)
 
     useEffect(() => {
-        console.log('before ref')
+        console.log('creating ref with: ', file.name)
         const storageRef = storage.ref(file.name)
-        console.log('after ref')
+        console.log('ref created: ', storageRef)
 
         storageRef.getDownloadURL().then((url) => {
             //IF THERE'S URL, IT MEANS THAT THE FILE ITS ALREADY UPLOADED

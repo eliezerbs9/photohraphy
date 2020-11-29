@@ -38,6 +38,10 @@ const PhotoGrid = ({album_id}) => {
         setSelectedPhotos(photos)
     }
 
+    const deletePhoto = photo => {
+
+    }
+
 
     useEffect(() => {
         console.log('useEffect PhotoGrid selected photos: ', selectedPhotos)
@@ -47,7 +51,7 @@ const PhotoGrid = ({album_id}) => {
         <>
         {photos && (
             <>
-                <PhotoModal visible={showModal} setVisible={setShowModal} photo={photo}/>
+                <PhotoModal visible={showModal} setVisible={setShowModal} photo={photo} album_id={album_id}/>
                 <div className="photo_grid">
                     {photos.map(photo => {
                         return (

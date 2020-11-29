@@ -434,3 +434,13 @@ body{
         width: auto;
         max-height: 80vh;
     }
+    .photo_modal_opt{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+        .photo_modal_opt .btn{
+            margin: 0;
+        }

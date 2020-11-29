@@ -34,40 +34,58 @@ const AddPhoto = ({album}) => {
         }
     }
 
+    const uploadImages = () => {
+        for(var i = 0; i <= files.length; i++){
+            let file = files[i]
+            if(i === files.length){
+                setFiles(null)
+            }else{
+                return(
+                    <>
+                        <p style={{margin: '0'}}>{file.name}</p>
+                        <PhotoUploader album={album} file={file}/>
+                    </>
+                )
+            }
+        }
+    }
+
     return (
         <>
-        <label>Add Photo</label>
-        <label style={{margin: "10px 0px"}}>
-            <input 
-                className=""
-                type="file" 
-                name="profile-photo"
-                onChange={photoHandler}
-                style={{display: "none"}}
-                multiple
-            />
-            <span className="btn btn--lg btn--success">Select Files</span>
-        </label>
-        {files.length > 0 && (
-            <>
-                {files.map((file) => {
-                    return(
-                        <>
-                            <p style={{margin: '0'}}>{file.name}</p>
-                            <PhotoUploader album={album} file={file}/>
-                        </>
-                    )
-                })}
-            </>
-        )}
-        {errors && (
-            <>
-                {errors.map(error =>(
-                    <p style={{color: 'red', margin: '2px 0', fontSize: 'small'}}>X - {error.file.name} cannot be uploaded. {error.error}</p>
-                 ))}
-            </>
-        )}
-
+            <label>Add Photo</label>
+            <label style={{margin: "10px 0px"}}>
+                <input 
+                    className=""
+                    type="file" 
+                    name="profile-photo"
+                    onChange={photoHandler}
+                    style={{display: "none"}}
+                    multiple
+                />
+                <span className="btn btn--lg btn--success">Select Files</span>
+            </label>
+            {files.length > 0 && (
+                <>
+                    {
+                        files.map((file) => {
+                            return(
+                                <>
+                                    <p style={{margin: '0'}}>{file.name}</p>
+                                    <PhotoUploader album={album} file={file}/>
+                                </>
+                            )
+                        })
+                    }
+                </>
+            )}
+            {errors && (
+                <>
+                    {errors.map(error =>(
+                        <p style={{color: 'red', margin: '2px 0', fontSize: 'small'}}>X - {error.file.name} cannot be uploaded. {error.error}</p>
+                    ))}
+                </>
+            )}
+            <button onClick={() => setFiles([])}>Done</button>
         </>
     )
 }
