@@ -2,16 +2,18 @@ import React, {useState,useContext, useEffect} from 'react'
 import {AuthContext} from '../Providers/AuthContext'
 import PhotoCard from './PhotoCard'
 import PhotoModal from './PhotoModal'
+import AddPhotoModal from '../Photos/AddPhotoModal'
 import {deletePhoto} from '../../scripts/firestore'
 
 
 import usePhotos from '../../hooks/usePhotos'
 
-const PhotoGrid = ({album_id}) => {
+const PhotoGrid = ({album}) => {
 
     const {user} = useContext(AuthContext)
-    const {photos} = usePhotos(user.uid ,album_id)
+    const {photos} = usePhotos(user.uid ,album.id)
     const [showPhotoModal, setShowPhotoModal] = useState(false)
+    const [showAddPhotoModal, setShowAddPhotoModal] = useState(false)
     const [photo, setPhoto] = useState(null)
     const [selectedPhotos, setSelectedPhotos] = useState([])
 
@@ -43,9 +45,9 @@ const PhotoGrid = ({album_id}) => {
     const deleteSelectedPhotos = () => {
         //Loope thru the selected photos and delete all of them
         for(let i=0; i<selectedPhotos.length; i++){
-            let photo = photos[i]
+            let photo = selectedPhotos[i]
             console.log('photo being deleted now: ',photo)
-            deletePhoto(user.uid, album_id, photo)
+            deletePhoto(user.uid, album.id, photo)
         }
 
     }
@@ -59,11 +61,15 @@ const PhotoGrid = ({album_id}) => {
         <>
             {photos && (
                 <>
-                    <PhotoModal visible={showPhotoModal} setVisible={setShowPhotoModal} photo={photo} album_id={album_id}/>
+                    <AddPhotoModal visible={showAddPhotoModal} setVisible={setShowAddPhotoModal} album={album}/>
+                    <PhotoModal visible={showPhotoModal} setVisible={setShowPhotoModal} photo={photo} album_id={album.id}/>
+                    <a className="btn btn--danger" style={{marginRight: 'auto'}} onClick={deleteSelectedPhotos}>
+                        Delete Photos
+                    </a>
+                    <a className="btn btn--primary" onClick={() => {setShowAddPhotoModal(true)}} >
+                        AddPhoto
+                    </a>
                     <div className="photo_grid">
-                        <a className="btn btn--danger" style={{marginRight: 'auto'}} onClick={deleteSelectedPhotos}>
-                            Delete Photos
-                        </a>
                         {photos.map(photo => {
                             return (
                                 <a key={photo.id} onClick={(e) => openPhotoModal(e, photo)}>
