@@ -9,6 +9,7 @@ const AddPhotoModal = ({visible, setVisible, album}) => {
             <Modal visible={visible} setVisible={setVisible}>
                 <div className="modal_form">
                     <AddPhoto album={album}/>
+                    <button>Done</button>
                 </div>
             </Modal>
         </>

@@ -31,11 +31,6 @@ const Album = () => {
                             console.log('add photo modal')
                         }}
                     >AddPhoto</a>
-                    <a 
-                        className="btn btn--danger"
-                        style={{marginRight: 'auto'}}
-                        
-                    >Delete Photos</a>
                     <div className="album_info">
                         <p>{album.id}</p>
                         <p>{album.name}</p>

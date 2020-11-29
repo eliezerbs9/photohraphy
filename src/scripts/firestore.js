@@ -1,9 +1,15 @@
-import {firestore} from '../firebase/config'
+import {firestore, storage} from '../firebase/config'
 
 export const deletePhoto = async (uid, album_id ,photo) => {
     try{
+        console.log('data being passed to firestore method uid: ', uid)
+        console.log('data being passed to firestore method album_id: ', album_id)
+        console.log('data being passed to firestore method photo.id: ', photo.id)
+
         let docRef =  firestore.collection('albums').doc(uid).collection('myAlbums').doc(album_id).collection('photos').doc(photo.id)
+        let storageRef = storage.ref(photo.name)
         await docRef.delete()
+        await storageRef.delete()
         console.log('photo deleted')
     }catch(error){
         console.log('Error deleting photo: ',error)
