@@ -18,6 +18,7 @@ const PhotoModal = ({visible, setVisible, photo, album_id}) => {
                                 className="btn btn--lg btn--danger"
                                 onClick={() => {
                                     deletePhoto(user.uid, album_id, photo )
+                                    setVisible(false)
                                 }}    
                             >Delete</button>
                             <button className="btn btn--lg btn--success">Cover</button>
@@ -25,9 +26,7 @@ const PhotoModal = ({visible, setVisible, photo, album_id}) => {
                     </div>
                 </Modal>
             )}
-            {!photo && (
-                <p>No photo to show</p>
-            )}
+            {!photo && setVisible(false)}
         </>
     )
 }
