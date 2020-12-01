@@ -63,7 +63,7 @@ const PhotoGrid = ({album}) => {
                 <>
                     <AddPhotoModal visible={showAddPhotoModal} setVisible={setShowAddPhotoModal} album={album}/>
                     <PhotoModal visible={showPhotoModal} setVisible={setShowPhotoModal} photo={photo} album_id={album.id}/>
-                    <a className="btn btn--danger" onClick={deleteSelectedPhotos}>
+                    <a className="btn btn--danger" style={{marginRight: 'auto'}} onClick={deleteSelectedPhotos}>
                         Delete Photos
                     </a>
                     <a className="btn btn--primary" onClick={() => {setShowAddPhotoModal(true)}} >

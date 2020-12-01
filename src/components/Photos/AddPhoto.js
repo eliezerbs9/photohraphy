@@ -1,9 +1,7 @@
 import React, {useState} from 'react'
 import PhotoUploader from './PhotoUploader'
 
-const AddPhoto = ({album}) => {
-    const [files, setFiles] = useState([]);
-    const [errors, setErrors] = useState([])
+const AddPhoto = ({album, files, setFiles, errors, setErrors}) => {
 
 
     const fileTypes = ['image/png', 'image/jpeg', 'image/jpg']
@@ -34,22 +32,6 @@ const AddPhoto = ({album}) => {
         }
     }
 
-    const uploadImages = () => {
-        for(var i = 0; i <= files.length; i++){
-            let file = files[i]
-            if(i === files.length){
-                setFiles(null)
-            }else{
-                return(
-                    <>
-                        <p style={{margin: '0'}}>{file.name}</p>
-                        <PhotoUploader album={album} file={file}/>
-                    </>
-                )
-            }
-        }
-    }
-
     return (
         <>
             <label>Add Photo</label>
@@ -62,7 +44,7 @@ const AddPhoto = ({album}) => {
                     style={{display: "none"}}
                     multiple
                 />
-                <span className="btn btn--lg btn--success">Select Files</span>
+                <span style={{margin: '0', marginRight: 'auto', float: 'left'}} className="btn btn--lg btn--success">Select Files</span>
             </label>
             {files.length > 0 && (
                 <>
@@ -85,7 +67,6 @@ const AddPhoto = ({album}) => {
                     ))}
                 </>
             )}
-            <button onClick={() => setFiles([])}>Done</button>
         </>
     )
 }

@@ -22,7 +22,7 @@ const PhotoUploader = ({file, album}) => {
     }, [file ,url, addPhoto])
 
     return (
-        <div className="progress_bar" style={{width: progress + '%'}}></div>
+        <div className="progress_bar" style={{width: progress + '%', marginBottom: '5px'}}></div>
     )
 }
 
