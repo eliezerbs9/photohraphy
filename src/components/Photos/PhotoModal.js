@@ -17,8 +17,12 @@ const PhotoModal = ({visible, setVisible, photo, album_id}) => {
                             <button 
                                 className="btn btn--lg btn--danger"
                                 onClick={() => {
-                                    deletePhoto(user.uid, album_id, photo )
-                                    setVisible(false)
+                                    deletePhoto(user.uid, album_id, photo ).then(
+                                        setVisible(false)
+                                    ).catch(error => {
+                                        console.error('Error', error)
+                                    })
+
                                 }}    
                             >Delete</button>
                             <button className="btn btn--lg btn--success">Cover</button>
