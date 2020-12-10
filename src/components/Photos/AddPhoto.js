@@ -10,14 +10,16 @@ const AddPhoto = ({album, files, setFiles, errors, setErrors}) => {
         let selected = e.target.files
         let valid = []
         let notValid = []
+        console.log('Selected Files: ', selected)
         if(selected.length >= 0){
             for(var i=0; i < selected.length; i++){
-                if(fileTypes.includes(selected[i].type)){
-                    valid.push(selected[i])
+                let file = selected[i]
+                if(fileTypes.includes(file.type)){
+                    valid.push(file)
                 }
                 else{
                     notValid.push({
-                        file: selected[i],
+                        file: file,
                         error: "Please selected an image file (png or jpeg)"
                     })
                 }
